@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<body>
+<form action="" method="POST">
+
+    {% csrf_token%}
+    {{ form.as_table }}
+    <input type="submit" value="login">
+
+</form>
+<a href="{% url 'sing' %}">Signup</a>
+</body>
+{% endblock %}

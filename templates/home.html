@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+body {
+  background-image: url("{% static 'images/download.jfif' %}");
+background-size: 100%;
+
+
+
+      background-repeat: no-repeat;
+}
+tr:nth-child(odd) {
+  background-color: yellow;
+  }
+</style>
+</head>
+<body>
+<center>
+<form action="" method="post">
+    {% csrf_token %}
+<h1>welcome to blogs</h1>
+    <p>here you can post your thoughts and explain breify and movie stories. for that you have to login aotherwise you can only read the data</p>
+<a href="{% url 'sing' %}">Signup</a>
+
+
+    <table style="width:30%">
+    <tr>
+    <td colspan="2">id</td>
+    <td colspan="2">title</td>
+    <td colspan="2">summary</td>
+     <td colspan="2">action</td>
+  </tr>
+{% for i in blog %}
+  <tr >
+
+    <td colspan="2" style="color:black">{{i.id}}</td>
+    <td colspan="2" style="color:blue">{{ i.title }}</td>
+    <td colspan="2" style="color:red">{{i.summary}}</td>
+      <td><a href="edit/{{i.id}}">edit</a></td>
+    <td><a href="delete/{{i.id}}">delete</a></td>
+  </tr>
+     {% endfor %}
+</table>
+</form>
+    </center>
+</body>
+</html>
+{% endblock %}

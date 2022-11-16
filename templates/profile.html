@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="POST">
+    {% csrf_token %}
+<h5 >Your IP: {{ip}}</h5>
+    {{form.as_p}}
+<input type="submit" >
+<a href="{% url 'logout' %}">logout</a>
+    </form>
+
+
+</body>
+</html>
+{% endblock %}
